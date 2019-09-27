@@ -8,7 +8,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary' " gc to comment out
+" Plugin 'tpope/vim-commentary' " gc to comment out
 Plugin 'pangloss/vim-javascript'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
@@ -28,6 +28,14 @@ Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
 Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'morhetz/gruvbox'
+
+Plugin 'styled-components/vim-styled-components'
+Plugin 'mxw/vim-jsx'
+Plugin 'prettier/vim-prettier'
+Plugin 'scrooloose/nerdtree'
+Plugin 'xuyuanp/nerdtree-git-plugin'
+" Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -71,7 +79,8 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set cursorline
 " set guifont=DejaVu\ Sans:h10  "set font (not preinstalled in OS)
-
+" set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 10
+set encoding=utf8
 
 " Open new splits to right and bottom 
 set splitbelow
@@ -95,8 +104,17 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-" font settings for powerline
-" air-line
+" Commenting shortcuts
+autocmd FileType javascript,c,cpp,java,scala let b:comment_leader = '// '
+autocmd FileType sh,ruby,python   let b:comment_leader = '# '
+autocmd FileType conf,fstab       let b:comment_leader = '# '
+autocmd FileType tex              let b:comment_leader = '% '
+autocmd FileType mail             let b:comment_leader = '> '
+autocmd FileType vim              let b:comment_leader = '" '
+noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+
+" font settings for powerline & air-line
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
@@ -116,6 +134,7 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_powerline_fonts = 1 " enable deviicons for powerline
 
 " airline symbols
 let g:airline_left_sep = ''
