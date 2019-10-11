@@ -1,7 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -19,55 +18,42 @@ Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'szw/vim-g'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'fatih/vim-go' " golang development 
 Plugin 'jamesroutley/vim-logbook'
 Plugin 'sheerun/vim-polyglot'   " syntax highlighting in most languages
-Plugin 'joshdick/onedark.vim'   " Atom-style dark theme
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
+" themes
 Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'morhetz/gruvbox'
+Plugin 'joshdick/onedark.vim'
 
+Plugin 'dense-analysis/ale'
+Plugin 'mrmargolis/dogmatic.vim' "disable arrow keys 
+" Plugin 'junegunn/fzf'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'mxw/vim-jsx'
 Plugin 'prettier/vim-prettier'
 Plugin 'scrooloose/nerdtree'
 Plugin 'xuyuanp/nerdtree-git-plugin'
-" Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Plugin 'ryanoasis/vim-devicons'
 
-" All of your Plugins must be added before the following line
+
 call vundle#end()
 filetype plugin indent on
 
-" --------------------------------
-" Pretty things
-" --------------------------------
+" THEME
 syntax on
+set background=dark
+colorscheme vim-monokai-tasty
+" colorscheme gruvbox
 " colorscheme onedark
-" colorscheme vim-monokai-tasty
-colorscheme gruvbox
 " :let g:airline_theme='gruvbox'
-:set background=dark
-let g:gruvbox_contrast_dark = 'hard'
+" let g:gruvbox_contrast_dark = 'hard'
 
-" Autocompletion
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
-" Set Airline bar theme
-" let g:airline_theme='bubblegum'
-let g:airline_theme='tomorrow'
-
-"rainbow Plugin Options (luochen1990/rainbow)
-let g:rainbow_active=1    " 0 if you want to enable it later via :RainbowToggle
-let g:gitgutter_realtime=1
-
-set lines=200       " set height to max
-set columns=100     " set width
-" winpos 800 0
-
+hi normal   ctermfg=white  ctermbg=black
+hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred
 set updatetime=0    " gitgutter update time
 set backspace=indent,eol,start " Bring backspace to life
 set number          " Line numbers
@@ -78,31 +64,37 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set cursorline
-" set guifont=DejaVu\ Sans:h10  "set font (not preinstalled in OS)
-" set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 10
+set relativenumber 
 set encoding=utf8
-
-" Open new splits to right and bottom 
 set splitbelow
 set splitright
-
-"Tab completion
 set wildmenu
 set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-    endfunction
-
-" Tab size
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+
+" font settings for powerline & air-line
+let g:airline_powerline_fonts = 1
+let g:airline_theme='jellybeans'
+" let g:airline_theme='simple'
+
+" NERDTree shortcut on ,ne
+let mapleader = ","
+nmap <leader>ne :NERDTree<cr>
+
+"rainbow Plugin Options (luochen1990/rainbow)
+let g:rainbow_active=1    " 0 if you want to enable it later via :RainbowToggle
+let g:gitgutter_realtime=1
+
+"prettier optioins
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+let g:prettier#exec_cmd_async = 1
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#semi = 'true'
 
 " Commenting shortcuts
 autocmd FileType javascript,c,cpp,java,scala let b:comment_leader = '// '
@@ -113,9 +105,6 @@ autocmd FileType mail             let b:comment_leader = '> '
 autocmd FileType vim              let b:comment_leader = '" '
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
-
-" font settings for powerline & air-line
-let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
