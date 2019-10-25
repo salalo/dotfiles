@@ -28,7 +28,7 @@ Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'morhetz/gruvbox'
 Plugin 'joshdick/onedark.vim'
 
-Plugin 'dense-analysis/ale'
+" Plugin 'dense-analysis/ale'
 Plugin 'mrmargolis/dogmatic.vim' "disable arrow keys 
 " Plugin 'junegunn/fzf'
 Plugin 'styled-components/vim-styled-components'
@@ -64,7 +64,7 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set cursorline
-set relativenumber 
+" set relativenumber 
 set encoding=utf8
 set splitbelow
 set splitright
@@ -74,6 +74,8 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set noshowmode " disable showing mode two times
+set nohlsearch " disable highlight :noh
 
 " font settings for powerline & air-line
 let g:airline_powerline_fonts = 1
