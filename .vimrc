@@ -54,6 +54,7 @@ colorscheme vim-monokai-tasty
 
 hi normal   ctermfg=white  ctermbg=black
 hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred
+hi VertSplit ctermbg=NONE guibg=NONE
 set updatetime=0    " gitgutter update time
 set backspace=indent,eol,start " Bring backspace to life
 set number          " Line numbers
