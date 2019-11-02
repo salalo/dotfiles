@@ -97,14 +97,21 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # some more ls aliases
 alias ll='ls -al'
 alias la='ls -A'
 alias l='ls -CF'
-alias shutdown='/sbin/shutdown -r now'
+alias shutdown='/sbin/shutdown -h now'
+alias poweroff='/sbin/poweroff'
 alias reboot='/sbin/reboot'
 alias as='/home/akad/android-studio/bin/studio.sh'
-alias runpixel='/home/akad/Android/Sdk/tools/emulator -avd Pixel_XL_API_24'
+alias runpixel='/home/akad/Android/Sdk/tools/emulator -avd Pixel_XL_API_25'
 alias sda='sudo mount /dev/sda1 /mnt/biggo/ && cd /mnt/biggo/'
 
 # Add an "alert" alias for long running commands.  Use like so:

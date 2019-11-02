@@ -20,6 +20,8 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+workspace 1 output HDMI-1
+workspace 2 output DVI-D-1
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -127,17 +129,19 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#set $bg-color		 #0D0DBD
-set $bg-color		 #F44336
+set $bg-color	           #022f4d
+# set $bg-color		     #F44336
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
 set $inactive-text-color #f3f4f5
 set $urgent-bg-color     #FF110D
-set $grey		 #141414
+set $grey                #000000
+
+#141414
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $inactive-bg-color  $bg-color          $text-color           #2f343f
+client.focused          $bg-color           $bg-color          $text-color           #2f343f
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color  #2f343f
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color  #2f343f
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color           #2f343f
@@ -146,9 +150,9 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # window edges
 hide_edge_borders both
 # no border for firefox
-for_window [class="Firefox"]        border none
-#new_window normal 0
-#new_float normal 0
+# for_window [class="Firefox"]        border none
+# new_window normal 2 
+# new_float normal 2 
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -nb "$grey" -sb "$bg-color" -l 10
@@ -164,7 +168,7 @@ bindsym $mod+d exec dmenu_run -nb "$grey" -sb "$bg-color" -l 10
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	position top
 	workspace_buttons yes
 
@@ -185,7 +189,7 @@ bar {
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
 
 # load wallpaper on satrt
-exec_always feh --bg-scale /home/akad/Documents/wallpapers/cb4.jpeg
+exec_always feh --bg-scale /home/akad/Documents/wallpapers/mojave.jpg
 
 # load monitors config on start
 exec_always xrandr --output DP-1 --off --output DVI-I-1 --off --output DVI-D-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
@@ -208,4 +212,4 @@ bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
 bindsym $mod+Ctrl+Left resize grow width 1 px or 1 ppt
 
 #keyboard speed
-exec --no-startup-id xset r rate 250 40
+exec --no-startup-id xset r rate 250 40 

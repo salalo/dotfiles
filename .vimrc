@@ -23,6 +23,7 @@ Plugin 'sheerun/vim-polyglot'   " syntax highlighting in most languages
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
+
 " themes
 Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'morhetz/gruvbox'
@@ -93,7 +94,7 @@ let g:gitgutter_realtime=1
 
 "prettier optioins
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+autocmd BufWritePre *.cpp,*.h,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 let g:prettier#exec_cmd_async = 1
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
