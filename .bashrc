@@ -112,7 +112,8 @@ alias poweroff='/sbin/poweroff'
 alias reboot='/sbin/reboot'
 alias as='/home/akad/android-studio/bin/studio.sh'
 alias runpixel='/home/akad/Android/Sdk/tools/emulator -avd Pixel_XL_API_25'
-alias sda='sudo mount /dev/sda1 /mnt/biggo/ && cd /mnt/biggo/'
+alias sda='sudo mount /dev/sda1 /mnt/sda/ && cd /mnt/sda/'
+alias st='/home/akad/sublime_text_3/sublime_text'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
