@@ -31,7 +31,7 @@ Plugin 'joshdick/onedark.vim'
 
 " Plugin 'dense-analysis/ale'
 Plugin 'mrmargolis/dogmatic.vim' "disable arrow keys 
-" Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'mxw/vim-jsx'
 Plugin 'prettier/vim-prettier'
@@ -87,6 +87,9 @@ let g:airline_theme='jellybeans'
 " NERDTree shortcut on ,ne
 let mapleader = ","
 nmap <leader>ne :NERDTree<cr>
+
+" FZF shortcut on ,f
+nmap <leader>f :FZF<cr>
 
 "rainbow Plugin Options (luochen1990/rainbow)
 let g:rainbow_active=1    " 0 if you want to enable it later via :RainbowToggle
