@@ -1,13 +1,17 @@
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
+;background = #222
+;background-alt = #444
+background = #022f4d
+background-alt = #000
 ;foreground = ${xrdb:color7:#222}
+;foreground = #141414
 foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
+foreground-alt = #7a7a7a
+primary = #0099ff
 secondary = #e60053
 alert = #bd2c40
+underline = #0099ff
 
 [bar/bar1]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -23,7 +27,7 @@ override-redirect = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
+line-size = 1 
 line-color = #f00
 
 ;border-size = 4
@@ -191,7 +195,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-underline = ${colors.underline}
 label = %percentage:2%%
 
 [module/memory]
@@ -199,7 +203,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline = ${colors.underline}
 label = %percentage_used%%
 
 [module/wlan]
@@ -208,7 +212,7 @@ interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+format-connected-underline = ${colors.underline}
 label-connected = %essid%
 
 format-disconnected =
@@ -229,7 +233,7 @@ type = internal/network
 interface = enp0s31f6
 interval = 3.0
 
-format-connected-underline = #55aa55
+format-connected-underline = ${colors.underline}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -252,14 +256,17 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = ${colors.underline}
 
 label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
+;format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume>
+format-volume-underline = ${colors.underline}
+
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
@@ -318,7 +325,7 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = ${colors.underline}
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
@@ -350,7 +357,7 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.underline}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
