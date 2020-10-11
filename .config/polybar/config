@@ -23,6 +23,8 @@ height = 20
 fixed-center = false
 ;remove automatic padding of windows
 override-redirect = true
+;hide topbar on full screen e.g. youtube
+wm-restack = bspwm
 
 background = ${colors.background}
 foreground = ${colors.foreground}
