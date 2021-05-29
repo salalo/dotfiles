@@ -1,21 +1,23 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+let g:coc_disable_startup_warning = 1
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" language support
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-commentary' " gc to comment out
 Plugin 'pangloss/vim-javascript'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'luochen1990/rainbow'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-line'
-Plugin 'kana/vim-textobj-entire'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'mxw/vim-jsx'
+Plugin 'jparise/vim-graphql'
+Plugin 'dense-analysis/ale'
+Plugin 'styled-components/vim-styled-components'
+Plugin 'prettier/vim-prettier'
 Plugin 'szw/vim-g'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'jamesroutley/vim-logbook'
@@ -23,22 +25,27 @@ Plugin 'sheerun/vim-polyglot'   " syntax highlighting in most languages
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
+Plugin 'neoclide/coc.nvim'
 
 " themes
 Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'morhetz/gruvbox'
 Plugin 'joshdick/onedark.vim'
 
-" Plugin 'dense-analysis/ale'
-Plugin 'mrmargolis/dogmatic.vim' "disable arrow keys 
-Plugin 'junegunn/fzf'
-Plugin 'styled-components/vim-styled-components'
-Plugin 'mxw/vim-jsx'
-Plugin 'prettier/vim-prettier'
+" vim use extensions
 Plugin 'scrooloose/nerdtree'
 Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'luochen1990/rainbow'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-line'
+Plugin 'kana/vim-textobj-entire'
 " Plugin 'ryanoasis/vim-devicons'
+" Plugin 'mrmargolis/dogmatic.vim' "disable arrow keys 
+" Plugin 'junegunn/fzf'
 
 
 call vundle#end()
@@ -140,3 +147,4 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
