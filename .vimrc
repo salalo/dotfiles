@@ -1,41 +1,14 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-let g:coc_disable_startup_warning = 1
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" language support
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-commentary' " gc to comment out
 Plugin 'pangloss/vim-javascript'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'mxw/vim-jsx'
-Plugin 'jparise/vim-graphql'
-Plugin 'dense-analysis/ale'
-Plugin 'styled-components/vim-styled-components'
-Plugin 'prettier/vim-prettier'
-Plugin 'szw/vim-g'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'jamesroutley/vim-logbook'
-Plugin 'sheerun/vim-polyglot'   " syntax highlighting in most languages
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mattn/emmet-vim'
-Plugin 'elzr/vim-json'
-Plugin 'neoclide/coc.nvim'
-
-" themes
-Plugin 'patstockwell/vim-monokai-tasty'
-Plugin 'morhetz/gruvbox'
-Plugin 'joshdick/onedark.vim'
-
-" vim use extensions
-Plugin 'scrooloose/nerdtree'
-Plugin 'xuyuanp/nerdtree-git-plugin'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -43,9 +16,29 @@ Plugin 'luochen1990/rainbow'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-entire'
-" Plugin 'ryanoasis/vim-devicons'
+Plugin 'szw/vim-g'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'jamesroutley/vim-logbook'
+Plugin 'sheerun/vim-polyglot'   " syntax highlighting in most languages
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mattn/emmet-vim'
+Plugin 'elzr/vim-json'
+
+" themes
+Plugin 'patstockwell/vim-monokai-tasty'
+Plugin 'morhetz/gruvbox'
+Plugin 'joshdick/onedark.vim'
+
+" Plugin 'dense-analysis/ale'
 " Plugin 'mrmargolis/dogmatic.vim' "disable arrow keys 
-" Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf'
+Plugin 'styled-components/vim-styled-components'
+Plugin 'mxw/vim-jsx'
+Plugin 'prettier/vim-prettier'
+Plugin 'scrooloose/nerdtree'
+Plugin 'xuyuanp/nerdtree-git-plugin'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plugin 'ryanoasis/vim-devicons'
 
 
 call vundle#end()
@@ -53,12 +46,17 @@ filetype plugin indent on
 
 " THEME
 syntax on
-set background=dark
 colorscheme vim-monokai-tasty
+set t_Co=256
 " colorscheme gruvbox
+set background=dark
 " colorscheme onedark
-" :let g:airline_theme='gruvbox'
-" let g:gruvbox_contrast_dark = 'hard'
+" let g:airline_theme='gruvbox'
+" let g:gruvbox_contrast_dark='hard'
+" font settings for powerline & air-line
+" let g:airline_powerline_fonts = 1
+let g:airline_theme='jellybeans'
+" let g:airline_theme='simple'
 
 hi normal   ctermfg=white  ctermbg=black
 hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred
@@ -73,7 +71,7 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set cursorline
-" set relativenumber 
+set relativenumber 
 set encoding=utf8
 set splitbelow
 set splitright
@@ -86,10 +84,6 @@ set expandtab
 set noshowmode " disable showing mode two times
 set nohlsearch " disable highlight :noh
 
-" font settings for powerline & air-line
-let g:airline_powerline_fonts = 1
-let g:airline_theme='jellybeans'
-" let g:airline_theme='simple'
 
 " NERDTree shortcut on ,ne
 let mapleader = ","
@@ -147,4 +141,3 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
-
