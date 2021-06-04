@@ -73,7 +73,8 @@ let g:airline_theme='jellybeans'
 hi normal   ctermfg=white  ctermbg=black
 hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred
 hi LineNr   ctermfg=grey ctermbg=black
-hi SignColumn   ctermfg=white ctermbg=black 
+hi SignColumn   cterm=NONE ctermbg=black 
+hi EndOfBuffer   cterm=NONE ctermbg=black 
 hi VertSplit ctermbg=NONE guibg=NONE
 set updatetime=0    " gitgutter update time
 set backspace=indent,eol,start " Bring backspace to life
@@ -100,6 +101,8 @@ set nohlsearch " disable highlight :noh
 
 " CoC extensions
 let g:coc_global_extensions = ['coc-tsserver']
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " NERDTree shortcut on ,ne
 nmap <leader>ne :NERDTree<cr>
