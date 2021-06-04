@@ -27,11 +27,13 @@ Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
 
 " themes
-Plugin 'patstockwell/vim-monokai-tasty'
-Plugin 'morhetz/gruvbox'
-Plugin 'joshdick/onedark.vim'
+" Plugin 'patstockwell/vim-monokai-tasty'
+" Plugin 'morhetz/gruvbox'
+" Plugin 'joshdick/onedark.vim'
+Plugin 'tomasiser/vim-code-dark'
 
 " Tools
+Plugin 'wakatime/vim-wakatime'
 " Plugin 'dense-analysis/ale'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'} " autocomplete suggestion
 " Plugin 'mrmargolis/dogmatic.vim' "disable arrow keys 
@@ -54,20 +56,24 @@ filetype plugin indent on
 
 " THEME
 syntax on
-colorscheme vim-monokai-tasty
 set t_Co=256
-" colorscheme gruvbox
 set background=dark
-" colorscheme onedark
-" let g:airline_theme='gruvbox'
-" let g:gruvbox_contrast_dark='hard'
-" font settings for powerline & air-line
-" let g:airline_powerline_fonts = 1
+colorscheme codedark
+"colorscheme vim-monokai-tasty
+"colorscheme gruvbox
+"colorscheme onedark
+"let g:airline_theme='gruvbox'
+"let g:gruvbox_contrast_dark='hard'
+"font settings for powerline & air-line
+"let g:airline_powerline_fonts = 1
 let g:airline_theme='jellybeans'
-" let g:airline_theme='simple'
+" let g:airline_theme = 'codedark'
+"let g:airline_theme='simple'
 
 hi normal   ctermfg=white  ctermbg=black
 hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred
+hi LineNr   ctermfg=grey ctermbg=black
+hi SignColumn   ctermfg=white ctermbg=black 
 hi VertSplit ctermbg=NONE guibg=NONE
 set updatetime=0    " gitgutter update time
 set backspace=indent,eol,start " Bring backspace to life
