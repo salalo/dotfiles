@@ -1,26 +1,28 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+let g:coc_disable_startup_warning = 1
+let mapleader = ","
+
+" Language support
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
+Plugin 'pangloss/vim-javascript'    " JavaScript support
+" Plugin 'leafgarland/typescript-vim' " TypeScript syntax
+" Plugin 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+" Plugin 'jparise/vim-graphql'        " GraphQL syntax
 " Plugin 'tpope/vim-commentary' " gc to comment out
-Plugin 'pangloss/vim-javascript'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'luochen1990/rainbow'
+" Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'styled-components/vim-styled-components'
+Plugin 'mxw/vim-jsx'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'szw/vim-g'
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'jamesroutley/vim-logbook'
 Plugin 'sheerun/vim-polyglot'   " syntax highlighting in most languages
-Plugin 'airblade/vim-gitgutter'
 Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
 
@@ -29,17 +31,23 @@ Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'morhetz/gruvbox'
 Plugin 'joshdick/onedark.vim'
 
+" Tools
 " Plugin 'dense-analysis/ale'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'} " autocomplete suggestion
 " Plugin 'mrmargolis/dogmatic.vim' "disable arrow keys 
+Plugin 'preservim/nerdcommenter' "commenting plugin ,cc ,cu
 Plugin 'junegunn/fzf'
-Plugin 'styled-components/vim-styled-components'
-Plugin 'mxw/vim-jsx'
 Plugin 'prettier/vim-prettier'
 Plugin 'scrooloose/nerdtree'
 Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'luochen1990/rainbow'
+Plugin 'airblade/vim-gitgutter'
 " Plugin 'ryanoasis/vim-devicons'
-
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on
@@ -84,9 +92,10 @@ set expandtab
 set noshowmode " disable showing mode two times
 set nohlsearch " disable highlight :noh
 
+" CoC extensions
+let g:coc_global_extensions = ['coc-tsserver']
 
 " NERDTree shortcut on ,ne
-let mapleader = ","
 nmap <leader>ne :NERDTree<cr>
 
 " FZF shortcut on ,f
@@ -103,16 +112,6 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#semi = 'true'
-
-" Commenting shortcuts
-autocmd FileType javascript,c,cpp,java,scala let b:comment_leader = '// '
-autocmd FileType sh,ruby,python   let b:comment_leader = '# '
-autocmd FileType conf,fstab       let b:comment_leader = '# '
-autocmd FileType tex              let b:comment_leader = '% '
-autocmd FileType mail             let b:comment_leader = '> '
-autocmd FileType vim              let b:comment_leader = '" '
-noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -131,7 +130,7 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_powerline_fonts = 1 " enable deviicons for powerline
+" let g:airline_powerline_fonts = 0 " enable devicons for powerline
 
 " airline symbols
 let g:airline_left_sep = ''
@@ -141,3 +140,31 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" set completeopt-=preview
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction
+    inoremap <silent><expr> <Tab>
+          \ pumvisible() ? "\<C-n>" :
+                \ <SID>check_back_space() ? "\<Tab>" :
+                      \ coc#refresh()
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
