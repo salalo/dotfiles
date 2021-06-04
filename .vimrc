@@ -71,11 +71,13 @@ let g:airline_theme='jellybeans'
 "let g:airline_theme='simple'
 
 hi normal   ctermfg=white  ctermbg=black
-hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred
-hi LineNr   ctermfg=grey ctermbg=black
+hi CursorLine   cterm=NONE ctermbg=233 guibg=NONE guifg=NONE
+hi CursorLineNR ctermbg=black ctermfg=white
+hi LineNr   ctermfg=darkgrey ctermbg=black
 hi SignColumn   cterm=NONE ctermbg=black 
 hi EndOfBuffer   cterm=NONE ctermbg=black 
 hi VertSplit ctermbg=NONE guibg=NONE
+
 set updatetime=0    " gitgutter update time
 set backspace=indent,eol,start " Bring backspace to life
 set number          " Line numbers
@@ -127,28 +129,28 @@ if !exists('g:airline_symbols')
 endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-" let g:airline_powerline_fonts = 0 " enable devicons for powerline
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
+"" let g:airline_powerline_fonts = 0 " enable devicons for powerline
 
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+"" airline symbols
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline_symbols.branch = ''
+"let g:airline_symbols.readonly = ''
+"let g:airline_symbols.linenr = ''
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
