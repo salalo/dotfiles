@@ -10,6 +10,9 @@ let mapleader = ","
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'    " JavaScript support
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'mhinz/vim-mix-format'
+
 "Plugin 'elixir-editors/vim-elixir'
 " Plugin 'leafgarland/typescript-vim' " TypeScript syntax
 " Plugin 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
@@ -28,7 +31,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
 
 " themes
-" Plugin 'patstockwell/vim-monokai-tasty'
+Plugin 'patstockwell/vim-monokai-tasty'
 " Plugin 'morhetz/gruvbox'
 " Plugin 'joshdick/onedark.vim'
 Plugin 'tomasiser/vim-code-dark'
@@ -60,25 +63,25 @@ filetype plugin indent on
 syntax on
 set t_Co=256
 set background=dark
-colorscheme codedark
-"colorscheme vim-monokai-tasty
+"colorscheme codedark
+colorscheme vim-monokai-tasty
 "colorscheme gruvbox
 "colorscheme onedark
 "let g:airline_theme='gruvbox'
 "let g:gruvbox_contrast_dark='hard'
 "font settings for powerline & air-line
 "let g:airline_powerline_fonts = 1
-let g:airline_theme='jellybeans'
+"let g:airline_theme='jellybeans'
 " let g:airline_theme = 'codedark'
 "let g:airline_theme='simple'
-
-hi normal   ctermfg=white  ctermbg=black
-hi CursorLine   cterm=NONE ctermbg=233
-hi CursorLineNR ctermbg=black ctermfg=white
-hi LineNr   ctermfg=darkgrey ctermbg=black
-hi SignColumn   cterm=NONE ctermbg=black 
-hi EndOfBuffer   cterm=NONE ctermbg=black 
-hi VertSplit ctermbg=NONE guibg=NONE
+let g:airline_theme='monokai_tasty'
+"hi normal   ctermfg=white  ctermbg=black
+"hi CursorLine   cterm=NONE ctermbg=233
+"hi CursorLineNR ctermbg=black ctermfg=white
+"hi LineNr   ctermfg=darkgrey ctermbg=black
+"hi SignColumn   cterm=NONE ctermbg=black 
+"hi EndOfBuffer   cterm=NONE ctermbg=black 
+"hi VertSplit ctermbg=NONE guibg=NONE
 
 set updatetime=0    " gitgutter update time
 set backspace=indent,eol,start " Bring backspace to life
@@ -102,6 +105,10 @@ set shiftwidth=2
 set expandtab
 set noshowmode " disable showing mode two times
 set nohlsearch " disable highlight :noh
+
+" Mix Format (Elixir)
+let g:mix_format_on_save = 1
+let g:mix_format_silent_errors = 1
 
 " CoC extensions
 let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd']
