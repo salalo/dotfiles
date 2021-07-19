@@ -55,6 +55,7 @@ Plugin 'airblade/vim-gitgutter'
 " Plugin 'ryanoasis/vim-devicons'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
+Plugin 'simeji/winresizer'
 
 call vundle#end()
 filetype plugin indent on
