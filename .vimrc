@@ -107,6 +107,9 @@ set expandtab
 set noshowmode " disable showing mode two times
 set nohlsearch " disable highlight :noh
 
+" Prevent cursor jump on save
+let g:syntastic_auto_jump = 0
+
 " Mix Format (Elixir)
 let g:mix_format_on_save = 1
 let g:mix_format_silent_errors = 1
