@@ -11,7 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'    " JavaScript support
 Plugin 'elixir-editors/vim-elixir'
-Plugin 'mhinz/vim-mix-format'
+"Plugin 'mhinz/vim-mix-format'
 
 "Plugin 'elixir-editors/vim-elixir'
 " Plugin 'leafgarland/typescript-vim' " TypeScript syntax
@@ -107,12 +107,11 @@ set expandtab
 set noshowmode " disable showing mode two times
 set nohlsearch " disable highlight :noh
 
-" Prevent cursor jump on save
-let g:syntastic_auto_jump = 0
-
 " Mix Format (Elixir)
-let g:mix_format_on_save = 1
-let g:mix_format_silent_errors = 1
+"let g:mix_format_on_save = 1
+"let g:mix_format_silent_errors = 1
+autocmd BufWritePost *.exs,*.ex :!mix format --check-equivalent %
+
 
 " CoC extensions
 let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd']
@@ -130,8 +129,10 @@ let g:rainbow_active=1    " 0 if you want to enable it later via :RainbowToggle
 let g:gitgutter_realtime=1
 
 "prettier optioins
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.ex,*.exs,*.cpp,*.h,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_require_pragma = 0
+"autocmd BufWritePre *.cpp,*.h,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 let g:prettier#exec_cmd_async = 1
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
