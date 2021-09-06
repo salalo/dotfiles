@@ -41,7 +41,6 @@ Plugin 'codota/tabnine-vim'
 Plugin 'wakatime/vim-wakatime'
 " Plugin 'dense-analysis/ale'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'} " autocomplete suggestion
-" Plugin 'mrmargolis/dogmatic.vim' "disable arrow keys 
 Plugin 'preservim/nerdcommenter' "commenting plugin ,cc ,cu
 Plugin 'junegunn/fzf'
 Plugin 'prettier/vim-prettier'
@@ -61,11 +60,12 @@ call vundle#end()
 filetype plugin indent on
 
 " THEME
+set re=0 "typescript syntax hidhlight fix
 syntax on
 set t_Co=256
 set background=dark
-"colorscheme codedark
-colorscheme vim-monokai-tasty
+colorscheme codedark
+"colorscheme vim-monokai-tasty
 "colorscheme gruvbox
 "colorscheme onedark
 "let g:airline_theme='gruvbox'
@@ -73,16 +73,16 @@ colorscheme vim-monokai-tasty
 "font settings for powerline & air-line
 "let g:airline_powerline_fonts = 1
 "let g:airline_theme='jellybeans'
-" let g:airline_theme = 'codedark'
+let g:airline_theme = 'codedark'
 "let g:airline_theme='simple'
-let g:airline_theme='monokai_tasty'
-"hi normal   ctermfg=white  ctermbg=black
-"hi CursorLine   cterm=NONE ctermbg=233
-"hi CursorLineNR ctermbg=black ctermfg=white
-"hi LineNr   ctermfg=darkgrey ctermbg=black
-"hi SignColumn   cterm=NONE ctermbg=black 
-"hi EndOfBuffer   cterm=NONE ctermbg=black 
-"hi VertSplit ctermbg=NONE guibg=NONE
+"let g:airline_theme='monokai_tasty'
+hi normal ctermfg=white  ctermbg=black
+hi CursorLine cterm=NONE ctermbg=233
+hi CursorLineNR ctermbg=black ctermfg=white
+hi LineNr ctermfg=darkgrey ctermbg=black
+hi SignColumn cterm=NONE ctermbg=black
+hi EndOfBuffer cterm=NONE ctermbg=black
+hi VertSplit ctermbg=NONE guibg=NONE
 
 set updatetime=0    " gitgutter update time
 set backspace=indent,eol,start " Bring backspace to life
@@ -94,7 +94,7 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set cursorline
-set relativenumber 
+set relativenumber
 set encoding=utf8
 set splitbelow
 set splitright
@@ -111,7 +111,6 @@ set nohlsearch " disable highlight :noh
 "let g:mix_format_on_save = 1
 "let g:mix_format_silent_errors = 1
 autocmd BufWritePost *.exs,*.ex :!mix format --check-equivalent %
-
 
 " CoC extensions
 let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd']
