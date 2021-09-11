@@ -12,6 +12,8 @@ set cursorline
 set smartindent
 set incsearch
 set wildmenu
+set splitbelow
+set splitright
 set wildmode=list:longest,list:full
 
 call plug#begin()
@@ -48,7 +50,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'kshenoy/vim-signature'
-"Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 "Plug 'szw/vim-g'
 "Plug 'tpope/vim-surround'
 "Plug 'luochen1990/rainbow'
@@ -86,8 +88,8 @@ let g:prettier#autoformat_require_pragma = 0
 let g:prettier#exec_cmd_async = 1
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#semi = 'true'
-autocmd BufWritePre *.cpp,*.h,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
-autocmd BufWritePost *.exs,*.ex :!mix format --check-equivalent %
+autocmd BufWritePre *.cpp,*.h,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue silent PrettierAsync
+autocmd BufWritePost *.exs,*.ex silent :!mix format --check-equivalent %
 "let g:mix_format_on_save = 1
 "let g:mix_format_silent_errors = 1
 
@@ -97,12 +99,14 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 "let g:coc_disable_startup_warning = 1
 
 let g:gitgutter_realtime=1
+let g:netrw_winsize = 25
 
 " Keymaps
 nmap <silent>[g <Plugin>(coc-diagnostic-prev)
 nmap <silent>]g <Plugin>(coc-diagnostic-next)
 nmap <leader>f :FZF<cr>
 nmap <leader>g :Ag<cr>
+nmap <leader>d :Buffers<cr>
 nmap <leader>u :UndotreeToggle<cr>
 
 " GREATEST TAB COMPLETION
