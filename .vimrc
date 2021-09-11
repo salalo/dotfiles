@@ -22,20 +22,15 @@ call plug#begin()
 Plug 'elixir-editors/vim-elixir'
 Plug 'leafgarland/typescript-vim' "TypeScript syntax
 Plug 'sheerun/vim-polyglot' "syntax highlighting in most languages
-"Plug 'styled-components/vim-styled-components'
-"Plug 'pangloss/vim-javascript' "JavaScript support
-"Plug 'mxw/vim-jsx'
-"Plug 'elzr/vim-json'
-"Plug 'jparise/vim-graphql' "GraphQL syntax
-"Plug 'maxmellon/vim-jsx-pretty' "JS and JSX syntax
-"Plug 'mhinz/vim-mix-format'
+Plug 'slashmili/alchemist.vim'
+Plug 'tpope/vim-endwise' "Closing blocks like do end
+Plug 'alvan/vim-closetag'
+
 
 " Themes
 Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'patstockwell/vim-monokai-tasty'
-"Plug 'morhetz/gruvbox'
 
 " Tools
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " autocomplete suggestion
@@ -47,19 +42,12 @@ Plug 'wakatime/vim-wakatime'
 Plug 'preservim/nerdcommenter' "commenting ,cc ,cu
 Plug 'prettier/vim-prettier'
 Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'kshenoy/vim-signature'
 Plug 'mattn/emmet-vim'
+Plug 'jiangmiao/auto-pairs'
 "Plug 'szw/vim-g'
-"Plug 'tpope/vim-surround'
-"Plug 'luochen1990/rainbow'
-"Plug 'simeji/winresizer'
 "Plug 'dense-analysis/ale'
-"Plug 'scrooloose/nerdtree'
-"Plug 'xuyuanp/nerdtree-git-Plug'
-"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-"Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -69,10 +57,6 @@ set re=0 "typescript syntax hidhlight fix
 set t_Co=256
 set background=dark
 let g:airline_theme = 'codedark'
-"colorscheme vim-monokai-tasty
-"colorscheme gruvbox
-"let g:airline_theme='gruvbox'
-"let g:gruvbox_contrast_dark='hard'
 hi normal ctermfg=white  ctermbg=black
 hi CursorLine cterm=NONE ctermbg=233
 hi CursorLineNR ctermbg=black ctermfg=white
@@ -82,6 +66,9 @@ hi EndOfBuffer cterm=NONE ctermbg=black
 hi VertSplit ctermbg=NONE guibg=NONE
 
 " Formatting
+let g:closetag_filenames = '*.html,*.xhtml,*.eex, *.leex, *.heex'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_shortcut = '>'
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_config_present = 1
 let g:prettier#autoformat_require_pragma = 0
@@ -89,9 +76,7 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#semi = 'true'
 autocmd BufWritePre *.cpp,*.h,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue silent PrettierAsync
-autocmd BufWritePost *.exs,*.ex silent :!mix format --check-equivalent %
-"let g:mix_format_on_save = 1
-"let g:mix_format_silent_errors = 1
+autocmd BufWritePost *.exs,*.ex silent :!mix format %
 
 " Coc
 let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd']
