@@ -46,8 +46,6 @@ Plug 'mbbill/undotree'
 Plug 'kshenoy/vim-signature'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
-"Plug 'szw/vim-g'
-"Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -86,22 +84,35 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:gitgutter_realtime=1
 let g:netrw_winsize = 25
 
-" Keymaps
-nmap <silent>[g <Plugin>(coc-diagnostic-prev)
-nmap <silent>]g <Plugin>(coc-diagnostic-next)
-nmap <leader>f :FZF<cr>
-nmap <leader>g :Ag<cr>
-nmap <leader>d :Buffers<cr>
-nmap <leader>u :UndotreeToggle<cr>
-
 " GREATEST TAB COMPLETION
 function! s:check_back_space() abort
   let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction
-    inoremap <silent><expr> <Tab>
-          \ pumvisible() ? "\<C-n>" :
-                \ <SID>check_back_space() ? "\<Tab>" :
-                      \ coc#refresh()
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+" FZF with proximity sorting
+function! g:FzfFilesSource()
+  let l:base = fnamemodify(expand('%'), ':h:.:S')
+  let l:proximity_sort_path = $HOME . '/.cargo/bin/proximity-sort'
+  return base == '.' ? 'rg --files' : printf('rg --files | %s %s', l:proximity_sort_path, expand('%'))
+endfunction
+
+nmap <leader>f :call fzf#vim#files('', {
+      \ 'source': g:FzfFilesSource(),
+      \ 'options': '--tiebreak=index'})<CR>
+
+" Keymaps
+nmap <silent>[g <Plugin>(coc-diagnostic-prev)
+nmap <silent>]g <Plugin>(coc-diagnostic-next)
+"nmap <leader>f :FZF<cr>
+nmap <leader>g :Rg<cr>
+nmap <leader>d :Buffers<cr>
+nmap <leader>u :UndotreeToggle<cr>
