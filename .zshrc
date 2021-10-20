@@ -109,7 +109,10 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # Sweet aliases
 alias gc="git commit -m"
+alias gcl="git clone"
 alias gp="git push"
+alias gpl="git pull"
 alias ga="git add"
 alias gs="git status"
 alias gb="git checkout"
+alias ms="mix phx.server"
