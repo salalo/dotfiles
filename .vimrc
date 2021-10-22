@@ -25,7 +25,7 @@ Plug 'sheerun/vim-polyglot' "syntax highlighting in most languages
 Plug 'slashmili/alchemist.vim'
 Plug 'tpope/vim-endwise' "Closing blocks like do end
 Plug 'alvan/vim-closetag'
-
+"Plug 'rust-lang/rust.vim'
 
 " Themes
 Plug 'tomasiser/vim-code-dark'
@@ -68,6 +68,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.eex, *.leex, *.heex'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_shortcut = '>'
 let g:prettier#autoformat = 1
+let g:rustfmt_autosave = 1
 let g:prettier#autoformat_config_present = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#exec_cmd_async = 1
@@ -77,7 +78,7 @@ autocmd BufWritePre *.cpp,*.h,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.
 autocmd BufWritePost *.exs,*.ex silent :!mix format %
 
 " Coc
-let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd', 'coc-rls']
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "let g:coc_disable_startup_warning = 1
 
