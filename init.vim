@@ -26,7 +26,6 @@ Plug 'sheerun/vim-polyglot' "syntax highlighting in most languages
 Plug 'slashmili/alchemist.vim'
 Plug 'tpope/vim-endwise' "Closing blocks like do end
 Plug 'alvan/vim-closetag'
-"Plug 'rust-lang/rust.vim'
 
 " Themes
 Plug 'tomasiser/vim-code-dark'
@@ -36,6 +35,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Tools
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
 Plug 'tpope/vim-fugitive'
 Plug 'codota/tabnine-vim'
 Plug 'wakatime/vim-wakatime'
@@ -78,7 +78,7 @@ autocmd BufWritePre *.cpp,*.h,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.
 autocmd BufWritePost *.exs,*.ex silent :!mix format %
 
 " Coc
-let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd', 'coc-rls']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd', 'coc-rls', 'coc-tabnine']
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "let g:coc_disable_startup_warning = 1
 
@@ -111,9 +111,12 @@ nmap <leader>f :call fzf#vim#files('', {
       \ 'options': '--tiebreak=index'})<CR>
 
 " Keymaps
-nmap <silent>[g <Plugin>(coc-diagnostic-prev)
-nmap <silent>]g <Plugin>(coc-diagnostic-next)
-"nmap <leader>f :FZF<cr>
+vnoremap <leader>y "*y
+nmap <leader>k <C-]>
+nmap <silent>gd <Plug>(coc-definition)
+nmap <silent>gD <Plug>(coc-implementation)
+nmap <silent>gr <Plug>(coc-references)
+nmap <leader>f :FZF<cr>
 nmap <leader>g :Rg<cr>
 nmap <leader>d :Buffers<cr>
 nmap <leader>u :UndotreeToggle<cr>
