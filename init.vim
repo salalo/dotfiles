@@ -11,6 +11,7 @@ set number
 set cursorline
 set smartindent
 set incsearch
+set nohlsearch
 set wildmenu
 set splitbelow
 set splitright
@@ -26,18 +27,19 @@ Plug 'sheerun/vim-polyglot' "syntax highlighting in most languages
 Plug 'slashmili/alchemist.vim'
 Plug 'tpope/vim-endwise' "Closing blocks like do end
 Plug 'alvan/vim-closetag'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " Themes
 Plug 'tomasiser/vim-code-dark'
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Tools
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-Plug 'tpope/vim-fugitive'
 Plug 'codota/tabnine-vim'
+Plug 'tpope/vim-fugitive'
 Plug 'wakatime/vim-wakatime'
 Plug 'preservim/nerdcommenter' "commenting ,cc ,cu
 Plug 'prettier/vim-prettier'
@@ -56,12 +58,14 @@ set t_Co=256
 set background=dark
 let g:airline_theme = 'codedark'
 hi normal ctermfg=white  ctermbg=black
+"hi Normal guibg=white ctermbg=NONE
 hi CursorLine cterm=NONE ctermbg=233
 hi CursorLineNR ctermbg=black ctermfg=white
 hi LineNr ctermfg=darkgrey ctermbg=black
 hi SignColumn cterm=NONE ctermbg=black
 hi EndOfBuffer cterm=NONE ctermbg=black
 hi VertSplit ctermbg=NONE guibg=NONE
+
 
 " Formatting
 let g:closetag_filenames = '*.html,*.xhtml,*.eex, *.leex, *.heex'
@@ -78,12 +82,14 @@ autocmd BufWritePre *.cpp,*.h,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.
 autocmd BufWritePost *.exs,*.ex silent :!mix format %
 
 " Coc
-let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd', 'coc-rls', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd', 'coc-rls',  'coc-rust-analyzer', 'coc-tabnine']
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "let g:coc_disable_startup_warning = 1
 
 let g:gitgutter_realtime=1
-let g:netrw_winsize = 25
+let g:netrw_winsize=80
+let g:netrw_preview=1
+let g:netrw_altv=1
 
 " GREATEST TAB COMPLETION
 function! s:check_back_space() abort
@@ -95,6 +101,7 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -117,6 +124,11 @@ nmap <silent>gd <Plug>(coc-definition)
 nmap <silent>gD <Plug>(coc-implementation)
 nmap <silent>gr <Plug>(coc-references)
 nmap <leader>f :FZF<cr>
+nmap <leader>w :bw<cr>
 nmap <leader>g :Rg<cr>
 nmap <leader>d :Buffers<cr>
 nmap <leader>u :UndotreeToggle<cr>
+nmap <leader>e :Explore<cr>
+nmap <leader>r :Rexplore<cr>
+nmap <leader>sc :Git commit<cr>
+nmap <leader>sp :Git push<cr>

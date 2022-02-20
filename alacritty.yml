@@ -1,0 +1,72 @@
+env:
+  TERM: alacritty
+
+window:
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: true
+
+  # Startup Mode (changes require restart)
+  startup_mode: Fullscreen
+
+font:
+  size: 14.0
+  # Offset is the extra space around each character. `offset.y` can be thought of
+  # as modifying the line spacing, and `offset.x` as modifying the letter spacing
+  # I've given in 14 spacing which fits really well with my fonts, you may change it
+  # to your convenience but make sure to adjust 'glyph_offset' appropriately post that
+  offset:
+   x: 0
+   y: 14
+
+  # Note: This requires RESTART
+  # By default when you change the offset above you'll see an issue, where the texts are bottom
+  # aligned with the cursor, this is to make sure they center align.
+  # This offset should usually be 1/2 of the above offset-y being set.
+  glyph_offset:
+   x: 0
+   # Keeping this as half of offset to vertically align the text in cursor
+   y: 7
+
+  # Better font rendering for mac
+  use_thin_strokes: true
+
+cursor:
+    style: Block
+
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
+   
+# XTerm's default colors
+colors:
+  # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xffffff'
+  # Normal colors
+  normal:
+    black:   '0x000000'
+    red:     '0xcd0000'
+    green:   '0x00cd00'
+    yellow:  '0xcdcd00'
+    blue:    '0x0000ee'
+    magenta: '0xcd00cd'
+    cyan:    '0x00cdcd'
+    white:   '0xe5e5e5'
+
+  # Bright colors
+  bright:
+    black:   '0x7f7f7f'
+    red:     '0xff0000'
+    green:   '0x00ff00'
+    yellow:  '0xffff00'
+    blue:    '0x5c5cff'
+    magenta: '0xff00ff'
+    cyan:    '0x00ffff'
+    white:   '0xffffff'
