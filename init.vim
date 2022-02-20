@@ -57,15 +57,14 @@ set re=0 "typescript syntax hidhlight fix
 set t_Co=256
 set background=dark
 let g:airline_theme = 'codedark'
-hi normal ctermfg=white  ctermbg=black
-"hi Normal guibg=white ctermbg=NONE
-hi CursorLine cterm=NONE ctermbg=233
-hi CursorLineNR ctermbg=black ctermfg=white
-hi LineNr ctermfg=darkgrey ctermbg=black
-hi SignColumn cterm=NONE ctermbg=black
-hi EndOfBuffer cterm=NONE ctermbg=black
-hi VertSplit ctermbg=NONE guibg=NONE
 
+hi CursorLine cterm=NONE ctermbg=233
+hi CursorLineNR ctermbg=NONE ctermfg=white
+hi Normal ctermfg=white  ctermbg=NONE
+hi LineNr ctermfg=darkgrey ctermbg=NONE
+hi SignColumn cterm=NONE ctermbg=NONE
+hi EndOfBuffer cterm=NONE ctermbg=NONE
+hi VertSplit ctermbg=NONE guibg=NONE
 
 " Formatting
 let g:closetag_filenames = '*.html,*.xhtml,*.eex, *.leex, *.heex'
