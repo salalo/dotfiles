@@ -19,7 +19,6 @@ set completeopt=longest,menuone
 call plug#begin()
 
 " Language support
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim' "TypeScript syntax
 Plug 'peitalin/vim-jsx-typescript'
@@ -41,7 +40,8 @@ Plug 'vim-airline/vim-airline-themes'
 " Tools
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'codota/tabnine-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'github/copilot.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'wakatime/vim-wakatime'
 Plug 'preservim/nerdcommenter' "commenting ,cc ,cu
@@ -84,7 +84,7 @@ autocmd BufWritePre *.cpp,*.h,*.go,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.sc
 autocmd BufWritePost *.exs,*.ex silent :!mix format %
 
 " Coc
-let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd', 'coc-rls',  'coc-rust-analyzer', 'coc-tabnine', 'coc-go']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-jest', 'coc-css', 'coc-styled-components', 'coc-prettier', 'coc-eslint', 'coc-json', 'coc-elixir', 'coc-clangd', 'coc-rls',  'coc-rust-analyzer', 'coc-go']
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "let g:coc_disable_startup_warning = 1
 
