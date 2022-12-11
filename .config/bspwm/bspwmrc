@@ -3,6 +3,8 @@
 sxhkd &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
+#bspc monitor DP-1 -d 1 2 3 4
+#bspc monitor eDP-1-1 -d 5 6 7 8 9
 
 bspc config border_width        1
 bspc config normal_border_color   \#000000
@@ -22,5 +24,5 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
-feh --bg-scale /home/akad/Documents/wallpapers/wallpaper.jpg
-$HOME/.config/polybar/launch.sh
+feh --bg-tile /home/salalo/Documents/wallpapers/one.jpg
+$HOME/.config/polybar/launch.sh	&
