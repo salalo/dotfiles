@@ -12,7 +12,7 @@ lsp_zero.extend_lspconfig({
 
 cmp.setup({
 	sources = {
-        {name = 'copilot'},
+    {name = 'copilot'},
 		{name = 'nvim_lsp'},
 	},
 	preselect = 'item',
@@ -36,7 +36,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   -- Replace the language servers listed here
   -- with the ones you want to install
-  ensure_installed = {'tsserver', 'rust_analyzer', 'eslint', 'cssmodules_ls', 'html', 'tailwindcss'},
+  ensure_installed = {'ts_ls', 'rust_analyzer', 'eslint', 'cssmodules_ls', 'html', 'tailwindcss'},
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({})

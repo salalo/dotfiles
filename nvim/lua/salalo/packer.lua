@@ -18,7 +18,6 @@ return require('packer').startup(function(use)
   use('nvim-lua/plenary.nvim')
   use('ThePrimeagen/harpoon')
   use('mbbill/undotree')
-  use('tpope/vim-fugitive')
 
   -- LSP
   use({'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'})
@@ -31,5 +30,12 @@ return require('packer').startup(function(use)
   }
 
   use('github/copilot.vim')
+
+  -- Git
+  use 'airblade/vim-gitgutter'
+  use('tpope/vim-fugitive')
+
+  -- Prettier
+  use 'mhartington/formatter.nvim'
 
 end)
