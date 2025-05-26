@@ -18,3 +18,16 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- replace the word I'm at in all occurrences
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- mix format
+-- vim.keymap.set("n", "<leader>F", "<cmd>!mix format<CR>")
+vim.keymap.set("n", "<leader>F", function()
+  local file = vim.fn.expand("%")
+  local result = vim.fn.system("mix format " .. vim.fn.shellescape(file))
+  if vim.v.shell_error ~= 0 then
+    vim.notify("mix format failed: " .. result, vim.log.levels.ERROR)
+  else
+    vim.notify("mix format succeeded", vim.log.levels.INFO)
+    vim.cmd("e!") -- Reload the current file to reflect changes
+  end
+end)
